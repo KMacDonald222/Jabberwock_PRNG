@@ -1,0 +1,3 @@
+[submodule "vendor/redistribution/SHA"]
+	path = vendor/redistribution/SHA
+	url = https://www.github.com/pr0f3ss/SHA.git
