@@ -25,5 +25,11 @@ Returns: std::string - The binary representation of the SHA-512 digest of the
 input string
 */
 extern std::vector<bool> SHA_bin(const std::string&);
+/*
+Pad and permute a string based on its SHA-512 digest
+Parameter: const std::string& input - The input string to pad and permute
+Returns: std::string - The padded and permuted input string
+*/
+extern std::string permute_string(const std::string&);
 
 #endif

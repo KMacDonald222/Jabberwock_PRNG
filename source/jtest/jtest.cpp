@@ -14,17 +14,11 @@ The main entry point of the jtest program
 Returns: int - The exit code of the program
 */
 int main() {
-    // Get the hexadecimal and binary digests of a string
+    // Permute a string
     std::string input = "Hello World!";
-    std::string hex_digest = SHA_hex(input);
-    std::vector<bool> bin_digest = SHA_bin(input);
+    std::string permuted = permute_string(input);
     // Print results
-    std::cout << "Input string: \"" << input << "\"" << std::endl;
-    std::cout << "Hexadecimal digest: \"" << hex_digest << "\"" << std::endl;
-    std::cout << "Binary digest: ";
-    for (size_t i = 0; i < bin_digest.size(); i++) {
-        std::cout << (int)bin_digest[i];
-    }
-    std::cout << std::endl;
+    std::cout << "permute_string(\"" << input << "\") = \"" << permuted << "\""
+        << std::endl;
     return EXIT_SUCCESS;
 }
