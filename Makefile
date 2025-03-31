@@ -25,11 +25,20 @@ all:
 	make $(JTEST_TGT)
 
 # Build the libjabberwock project
-$(JLIB_TGT): $(JLIB_SRC)utilities.o
-	$(AR) $(JLIB_TGT) $(JLIB_SRC)utilities.o
+$(JLIB_TGT): $(JLIB_SRC)utilities.o $(JLIB_SRC)abstract_node.o \
+	$(JLIB_SRC)LFSR_node.o
+	$(AR) $(JLIB_TGT) $(JLIB_SRC)utilities.o $(JLIB_SRC)abstract_node.o \
+		$(JLIB_SRC)LFSR_node.o
 
 $(JLIB_SRC)utilities.o: $(JLIB_SRC)utilities.cpp
 	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)utilities.o -c $(JLIB_SRC)utilities.cpp
+
+$(JLIB_SRC)abstract_node.o: $(JLIB_SRC)abstract_node.cpp
+	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)abstract_node.o -c \
+		$(JLIB_SRC)abstract_node.cpp
+
+$(JLIB_SRC)LFSR_node.o: $(JLIB_SRC)LFSR_node.cpp
+	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)LFSR_node.o -c $(JLIB_SRC)LFSR_node.cpp
 
 # Build the jtest project
 $(JTEST_TGT): $(JTEST_SRC)jtest.o
