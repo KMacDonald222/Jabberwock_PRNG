@@ -32,6 +32,10 @@ std::vector<std::vector<size_t>> LFSR_CONFIGS = {
 
 // Implement LFSR_node class functions
 
+LFSR_node::~LFSR_node() {
+    clear();
+}
+
 void LFSR_node::seed(const std::string& seed, size_t) {
     // Compute seed SHA-512 digest
     std::vector<bool> bin_digest = SHA_bin(seed);

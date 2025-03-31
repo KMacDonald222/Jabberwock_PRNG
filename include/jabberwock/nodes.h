@@ -40,9 +40,79 @@ protected:
     std::vector<abstract_node*> m_children;
 };
 
+// An XOR node in the Jabberwock PRNG tree
+class XOR_node : public abstract_node {
+public:
+    /*
+    XOR node destructor
+    */
+    ~XOR_node() override;
+    /*
+    Initialize this XOR node's and its childrens' memory
+    Parameter: const std::string& seed - Seed data to choose child types to
+    generate and seed
+    Parameter: size_t level - The level of this node in the Jabberwock PRNG tree
+    */
+    void seed(const std::string&, size_t) override;
+    /*
+    Get a pseudorandom byte from this XOR node by bitwise XOR of the outputs of
+    its children
+    Returns: uint8_t - A pseudorandom byte
+    */
+    uint8_t get_byte() override;
+};
+
+// An AND node in the Jabberwock PRNG tree
+class AND_node : public abstract_node {
+public:
+    /*
+    AND node destructor
+    */
+    ~AND_node() override;
+    /*
+    Initialize this AND node's and its childrens' memory
+    Parameter: const std::string& seed - Seed data to choose child types to
+    generate and seed
+    Parameter: size_t level - The level of this node in the Jabberwock PRNG tree
+    */
+    void seed(const std::string&, size_t) override;
+    /*
+    Get a pseudorandom byte from this AND node by bitwise AND of the outputs of
+    its children
+    Returns: uint8_t - A pseudorandom byte
+    */
+    uint8_t get_byte() override;
+};
+
+// An OR node in the Jabberwock PRNG tree
+class OR_node : public abstract_node {
+public:
+    /*
+    OR node destructor
+    */
+    ~OR_node() override;
+    /*
+    Initialize this OR node's and its childrens' memory
+    Parameter: const std::string& seed - Seed data to choose child types to
+    generate and seed
+    Parameter: size_t level - The level of this node in the Jabberwock PRNG tree
+    */
+    void seed(const std::string&, size_t) override;
+    /*
+    Get a pseudorandom byte from this OR node by bitwise OR of the outputs of
+    its children
+    Returns: uint8_t - A pseudorandom byte
+    */
+    uint8_t get_byte() override;
+};
+
 // A Galois LFSR node in the Jabberwock PRNG tree
 class LFSR_node : public abstract_node {
 public:
+    /*
+    LFSR node destructor
+    */
+    ~LFSR_node() override;
     /*
     Initialize this LFSR node's memory
     Parameter: const std::string& seed - Seed data to choose LFSR configuration

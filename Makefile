@@ -5,7 +5,7 @@
 # 			Jabberwock PRNG project
 
 # Define compiler and archiver command constants
-CPPC = g++ -Wall -Wextra -pedantic
+CPPC = g++ -Wall -Wextra -pedantic -Ofast
 AR = ar rcs
 
 # Define libjabberwock project paths and commands
@@ -26,9 +26,11 @@ all:
 
 # Build the libjabberwock project
 $(JLIB_TGT): $(JLIB_SRC)utilities.o $(JLIB_SRC)abstract_node.o \
-	$(JLIB_SRC)LFSR_node.o
+	$(JLIB_SRC)XOR_node.o $(JLIB_SRC)AND_node.o $(JLIB_SRC)OR_node.o \
+	$(JLIB_SRC)LFSR_node.o $(JLIB_SRC)jabberwock.o
 	$(AR) $(JLIB_TGT) $(JLIB_SRC)utilities.o $(JLIB_SRC)abstract_node.o \
-		$(JLIB_SRC)LFSR_node.o
+		$(JLIB_SRC)XOR_node.o $(JLIB_SRC)AND_node.o $(JLIB_SRC)OR_node.o \
+		$(JLIB_SRC)LFSR_node.o $(JLIB_SRC)jabberwock.o
 
 $(JLIB_SRC)utilities.o: $(JLIB_SRC)utilities.cpp
 	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)utilities.o -c $(JLIB_SRC)utilities.cpp
@@ -37,8 +39,20 @@ $(JLIB_SRC)abstract_node.o: $(JLIB_SRC)abstract_node.cpp
 	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)abstract_node.o -c \
 		$(JLIB_SRC)abstract_node.cpp
 
+$(JLIB_SRC)XOR_node.o: $(JLIB_SRC)XOR_node.cpp
+	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)XOR_node.o -c $(JLIB_SRC)XOR_node.cpp
+
+$(JLIB_SRC)AND_node.o: $(JLIB_SRC)AND_node.cpp
+	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)AND_node.o -c $(JLIB_SRC)AND_node.cpp
+
+$(JLIB_SRC)OR_node.o: $(JLIB_SRC)OR_node.cpp
+	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)OR_node.o -c $(JLIB_SRC)OR_node.cpp
+
 $(JLIB_SRC)LFSR_node.o: $(JLIB_SRC)LFSR_node.cpp
 	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)LFSR_node.o -c $(JLIB_SRC)LFSR_node.cpp
+
+$(JLIB_SRC)jabberwock.o: $(JLIB_SRC)jabberwock.cpp
+	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)jabberwock.o -c $(JLIB_SRC)jabberwock.cpp
 
 # Build the jtest project
 $(JTEST_TGT): $(JTEST_SRC)jtest.o
