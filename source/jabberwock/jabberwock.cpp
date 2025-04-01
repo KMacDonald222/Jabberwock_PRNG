@@ -14,7 +14,7 @@ jabberwock::~jabberwock() {
 }
 
 void jabberwock::seed(const std::string& seed) {
-    m_root.seed(seed, 5);
+    m_root.seed(seed, 3);
 }
 
 uint8_t jabberwock::get_byte() {

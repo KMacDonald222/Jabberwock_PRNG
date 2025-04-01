@@ -1,3 +1,6 @@
 [submodule "vendor/redistribution/SHA"]
 	path = vendor/redistribution/SHA
 	url = https://www.github.com/pr0f3ss/SHA.git
+[submodule "tests/jtest/sp800_22_tests"]
+	path = tests/jtest/sp800_22_tests
+	url = https://www.github.com/dj-on-github/sp800_22_tests.git
