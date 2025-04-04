@@ -1,0 +1,955 @@
+Script started on 2025-04-02 21:33:39-03:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="190" LINES="12"]
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG[00m$ make
+[?2004lmake bin/libjabberwock.a
+make[1]: Entering directory '/home/dlli35/Documents/Projects/Programming/Jabberwock_PRNG'
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/jabberwock/ -Ivendor/include/ -o source/jabberwock/utilities.o -c source/jabberwock/utilities.cpp
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/jabberwock/ -Ivendor/include/ -o source/jabberwock/abstract_node.o -c \
+	source/jabberwock/abstract_node.cpp
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/jabberwock/ -Ivendor/include/ -o source/jabberwock/XOR_node.o -c source/jabberwock/XOR_node.cpp
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/jabberwock/ -Ivendor/include/ -o source/jabberwock/AND_node.o -c source/jabberwock/AND_node.cpp
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/jabberwock/ -Ivendor/include/ -o source/jabberwock/OR_node.o -c source/jabberwock/OR_node.cpp
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/jabberwock/ -Ivendor/include/ -o source/jabberwock/LFSR_node.o -c source/jabberwock/LFSR_node.cpp
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/jabberwock/ -Ivendor/include/ -o source/jabberwock/jabberwock.o -c source/jabberwock/jabberwock.cpp
+ar rcs bin/libjabberwock.a source/jabberwock/utilities.o source/jabberwock/abstract_node.o \
+	source/jabberwock/XOR_node.o source/jabberwock/AND_node.o source/jabberwock/OR_node.o \
+	source/jabberwock/LFSR_node.o source/jabberwock/jabberwock.o
+make[1]: Leaving directory '/home/dlli35/Documents/Projects/Programming/Jabberwock_PRNG'
+make bin/jtest
+make[1]: Entering directory '/home/dlli35/Documents/Projects/Programming/Jabberwock_PRNG'
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/ -Ivendor/include/ -o source/jtest/jtest.o -c source/jtest/jtest.cpp
+g++ -Wall -Wextra -pedantic -Ofast -o bin/jtest source/jtest/jtest.o -Lbin/ -ljabberwock -Lvendor/bin/ -lsha
+make[1]: Leaving directory '/home/dlli35/Documents/Projects/Programming/Jabberwock_PRNG'
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG[00m$ cd tests/jtest
+[?2004l[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jtest[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jtest[00m$ mkdir data
+[?2004l[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jtest[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jtest[00m$ ./../../bin/jtest
+[?2004lOutput file count: 128
+Output file size: 131072
+
+Generating data file "data/1.bin"
+Using seed "Y4>,Btu_z68>0;B?"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 213s
+
+Generating data file "data/2.bin"
+Using seed "ra\N{,.8dH<^97{m"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 236s
+
+Generating data file "data/3.bin"
+Using seed "Q+('k97OU?M9\[OM"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 174s
+
+Generating data file "data/4.bin"
+Using seed "SiE_G2yJpB\D*7|#"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 185s
+
+Generating data file "data/5.bin"
+Using seed "y#`O'+2rruFL+tCK"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 257s
+
+Generating data file "data/6.bin"
+Using seed "H6AnOdWiE;LRh%AL"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 983s
+
+Generating data file "data/7.bin"
+Using seed "{fz0w^G[5-eC)^m'"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 206s
+
+Generating data file "data/8.bin"
+Using seed "s+JluKte5ja=}~c^"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 442s
+
+Generating data file "data/9.bin"
+Using seed "%Gvh[g/c,#E7P:im"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 454s
+
+Generating data file "data/10.bin"
+Using seed "m"xMGVQq$QHX'K*G"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 394s
+
+Generating data file "data/11.bin"
+Using seed ";j{*p[q+A?D\:LGh"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 533s
+
+Generating data file "data/12.bin"
+Using seed "Hi>[#O*MK;O65C+~"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 265s
+
+Generating data file "data/13.bin"
+Using seed "_k}fCjx2i~X3R3QD"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 577s
+
+Generating data file "data/14.bin"
+Using seed "=OwuIjms$~#oH?u,"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 222s
+
+Generating data file "data/15.bin"
+Using seed "j[D_!ft(k:,gDnKu"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 205s
+
+Generating data file "data/16.bin"
+Using seed "glUOu^l4_}X.}":c"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 130s
+
+Generating data file "data/17.bin"
+Using seed "9Y}p#m4t7gzp.(0E"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 634s
+
+Generating data file "data/18.bin"
+Using seed "zj.ZuJikD%*Wh$YV"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 407s
+
+Generating data file "data/19.bin"
+Using seed "&"qQiZ(U%[)32EmG"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 530s
+
+Generating data file "data/20.bin"
+Using seed "{K5m/SBcDPd).!K5"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 354s
+
+Generating data file "data/21.bin"
+Using seed "Yf`l$]lO&`w]$Ozb"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 176s
+
+Generating data file "data/22.bin"
+Using seed "y)ncH}40I7E6o\"r"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 187s
+
+Generating data file "data/23.bin"
+Using seed "/B24vSx7<Z~![4@:"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 596s
+
+Generating data file "data/24.bin"
+Using seed "tu>g]2V1P`{iUozt"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 317s
+
+Generating data file "data/25.bin"
+Using seed "P^@pEfBBjGIB_PW9"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 310s
+
+Generating data file "data/26.bin"
+Using seed "pU\*2qowV6J\/*N\"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 378s
+
+Generating data file "data/27.bin"
+Using seed ">VJ@f-Jo"r|mlQ!F"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 703s
+
+Generating data file "data/28.bin"
+Using seed "QA[xQH.Q{hkSudms"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 1058s
+
+Generating data file "data/29.bin"
+Using seed "YV`i-(w85qZ;lF1!"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 364s
+
+Generating data file "data/30.bin"
+Using seed "gT3bF!S.nh;7kH%n"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 141s
+
+Generating data file "data/31.bin"
+Using seed "H0v>yWLI+033vJ91"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 1071s
+
+Generating data file "data/32.bin"
+Using seed "3SHn.E_+M6Db{8pA"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 421s
+
+Generating data file "data/33.bin"
+Using seed "XPY`=9*Id'_y5F${"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 584s
+
+Generating data file "data/34.bin"
+Using seed "xRgav"+&3;oAiI`l"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 234s
+
+Generating data file "data/35.bin"
+Using seed "xd-}RE@Va<yKCiDZ"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 822s
+
+Generating data file "data/36.bin"
+Using seed "ZJfzF"=*RF9~n}qP"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 241s
+
+Generating data file "data/37.bin"
+Using seed "<G(O0Q9PN{`;a#/e"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 916s
+
+Generating data file "data/38.bin"
+Using seed "=E3w!U0,EdC""SM}"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 200s
+
+Generating data file "data/39.bin"
+Using seed "z~*};BJ8](#]"3X8"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 370s
+
+Generating data file "data/40.bin"
+Using seed "m6({5y-)1{lyLc'p"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 340s
+
+Generating data file "data/41.bin"
+Using seed "@48C^"_zk>>gGaTT"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 533s
+
+Generating data file "data/42.bin"
+Using seed "6I_Rl1^[/":0?R$!"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 594s
+
+Generating data file "data/43.bin"
+Using seed "1r4=o/:y,}K4u32F"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 409s
+
+Generating data file "data/44.bin"
+Using seed "qsB2ZM?y(u{*_W}r"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 451s
+
+Generating data file "data/45.bin"
+Using seed "{C*6b$)ZcZ8whPhy"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 374s
+
+Generating data file "data/46.bin"
+Using seed "&*%LA$o9dgBt@\-a"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 564s
+
+Generating data file "data/47.bin"
+Using seed "xyLy7A20zPLMJSp'"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 359s
+
+Generating data file "data/48.bin"
+Using seed "G?76#BUlHA4P|?Pr"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 609s
+
+Generating data file "data/49.bin"
+Using seed "D`V)g2zKxqB^*QHT"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 419s
+
+Generating data file "data/50.bin"
+Using seed "||4X;3n2#,"dWLuz"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 668s
+
+Generating data file "data/51.bin"
+Using seed "ru\CCTme(O)cJ,aE"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 359s
+
+Generating data file "data/52.bin"
+Using seed "R5GmNU]W'QZs1>XX"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 566s
+
+Generating data file "data/53.bin"
+Using seed ".rz`)R4eK.6tv6c+"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 726s
+
+Generating data file "data/54.bin"
+Using seed ":J3(IcKeS9ByMyb0"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 369s
+
+Generating data file "data/55.bin"
+Using seed "UFP)wy}lXE5xp7\l"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 508s
+
+Generating data file "data/56.bin"
+Using seed "vX?#e(mWCO`orG$+"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 636s
+
+Generating data file "data/57.bin"
+Using seed "-.gNc?de#81<aViA"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 582s
+
+Generating data file "data/58.bin"
+Using seed "Y74@AV$cO9'l|`25"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 1404s
+
+Generating data file "data/59.bin"
+Using seed "d8xf71j\}Q=t-AU]"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 463s
+
+Generating data file "data/60.bin"
+Using seed "m3wNd5|<T-i{:0C?"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 447s
+
+Generating data file "data/61.bin"
+Using seed "Xf49L]#$judZ?ct="
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 631s
+
+Generating data file "data/62.bin"
+Using seed "5U4N4yK2|S/p7boj"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 559s
+
+Generating data file "data/63.bin"
+Using seed "g.,"rF!F~$4e^@;;"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 263s
+
+Generating data file "data/64.bin"
+Using seed "!eikI>RC:qR3sl=D"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 104s
+
+Generating data file "data/65.bin"
+Using seed "(pAf?GKe0tjAb$:h"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 979s
+
+Generating data file "data/66.bin"
+Using seed "(3,'1oyC5u%@KBK."
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 502s
+
+Generating data file "data/67.bin"
+Using seed ":0D::[?KM8k{,5?6"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 610s
+
+Generating data file "data/68.bin"
+Using seed "}'h/LKbvj^2UN+sI"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 374s
+
+Generating data file "data/69.bin"
+Using seed "2b#C]#n5;Cx{*xD!"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 440s
+
+Generating data file "data/70.bin"
+Using seed ">)`J/2jJ[-If3~})"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 405s
+
+Generating data file "data/71.bin"
+Using seed "gW=~$$kF7N,up1`n"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 469s
+
+Generating data file "data/72.bin"
+Using seed "q%cQ=lE%@=pk'8zD"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 545s
+
+Generating data file "data/73.bin"
+Using seed "0:I.~SdmK!6Zh_sx"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 420s
+
+Generating data file "data/74.bin"
+Using seed "VusnKbx=[R!)ffSU"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 550s
+
+Generating data file "data/75.bin"
+Using seed "b`s!xws*c#+jTjL]"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 417s
+
+Generating data file "data/76.bin"
+Using seed "I$^t%iKDfRSkW0$c"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 478s
+
+Generating data file "data/77.bin"
+Using seed "P1irC`e$iws!5$A}"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 610s
+
+Generating data file "data/78.bin"
+Using seed "{6=cU1FZ<Co?+xb^"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 499s
+
+Generating data file "data/79.bin"
+Using seed "Dkd607p.INEt'emO"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 501s
+
+Generating data file "data/80.bin"
+Using seed "QDQP$BT@d&!v9h6+"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 249s
+
+Generating data file "data/81.bin"
+Using seed "r9x&bS5(5ohgt.Uo"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 877s
+
+Generating data file "data/82.bin"
+Using seed "bP#l;Bs/Ny?b55s@"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 993s
+
+Generating data file "data/83.bin"
+Using seed "?VO`Syoc=w8)Uhdb"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 277s
+
+Generating data file "data/84.bin"
+Using seed "bl=,+JwE&A%'%3y$"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 576s
+
+Generating data file "data/85.bin"
+Using seed "3+9a\Dc&e0bdW5ec"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 181s
+
+Generating data file "data/86.bin"
+Using seed ";;ZN4`'q~2NL)qUs"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 656s
+
+Generating data file "data/87.bin"
+Using seed "ijs@+/}:o:>pF3'a"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 216s
+
+Generating data file "data/88.bin"
+Using seed "Yw{iB0D2";s^Mr3?"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 467s
+
+Generating data file "data/89.bin"
+Using seed "FA!'zaR[:Q&A>3~b"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 154s
+
+Generating data file "data/90.bin"
+Using seed "ET96is{eNkpEG,D="
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 471s
+
+Generating data file "data/91.bin"
+Using seed "xKnBK%t%~f5dN0es"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 717s
+
+Generating data file "data/92.bin"
+Using seed "8T#V_VZD%tiQ:_hs"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 266s
+
+Generating data file "data/93.bin"
+Using seed "AA>05ru0B$[p/'M&"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 677s
+
+Generating data file "data/94.bin"
+Using seed "p\I5pM(z^w|!m2z{"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 248s
+
+Generating data file "data/95.bin"
+Using seed "@xH=U@!v_tP0|1x0"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 784s
+
+Generating data file "data/96.bin"
+Using seed "V%Up'*]HjOOBv{T2"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 278s
+
+Generating data file "data/97.bin"
+Using seed "\`To7ZPy<4NrLp^L"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 420s
+
+Generating data file "data/98.bin"
+Using seed "zG!bTuIi*BJ8THPo"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 352s
+
+Generating data file "data/99.bin"
+Using seed "m82/=wcOG|^r0R@O"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 360s
+
+Generating data file "data/100.bin"
+Using seed "C*PwiD4vesJYeyrq"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 636s
+
+Generating data file "data/101.bin"
+Using seed "+Y|3aw<G'iX^e$/H"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 181s
+
+Generating data file "data/102.bin"
+Using seed "SpifSRFbooZsSvN("
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 155s
+
+Generating data file "data/103.bin"
+Using seed "?*'?jTFF!H-^Q_SN"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 321s
+
+Generating data file "data/104.bin"
+Using seed "5~S2Wy3)R8hOI?CH"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 593s
+
+Generating data file "data/105.bin"
+Using seed "&zG"<-!e<spO8mGS"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 1070s
+
+Generating data file "data/106.bin"
+Using seed "rz?{CH@.|onDn|ka"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 165s
+
+Generating data file "data/107.bin"
+Using seed "t"w'7c~K/|D&gj$x"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 310s
+
+Generating data file "data/108.bin"
+Using seed "8ippQwOK0g[CaD@/"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 451s
+
+Generating data file "data/109.bin"
+Using seed "/d:^ga;%|>S`8!@V"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 205s
+
+Generating data file "data/110.bin"
+Using seed ")w_%,$Um)n}pQWO\"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 364s
+
+Generating data file "data/111.bin"
+Using seed "e(F0(1viEsN+>\Nn"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 156s
+
+Generating data file "data/112.bin"
+Using seed "Q#<[+<$!kYvfZ)/#"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 362s
+
+Generating data file "data/113.bin"
+Using seed "d4t{K]`pL}g(N>cJ"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 414s
+
+Generating data file "data/114.bin"
+Using seed "gzb<w^dL(zQNo\;r"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 215s
+
+Generating data file "data/115.bin"
+Using seed "e}9O7|ix*\mA[ojZ"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 416s
+
+Generating data file "data/116.bin"
+Using seed "S-W|B~%04!2,vX}E"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 1116s
+
+Generating data file "data/117.bin"
+Using seed "RIt3C1GPa<pTlE,i"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 414s
+
+Generating data file "data/118.bin"
+Using seed "u.cVDn0&}RJ]T#>P"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 793s
+
+Generating data file "data/119.bin"
+Using seed "-'ysXj&dg1W'k.E4"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 377s
+
+Generating data file "data/120.bin"
+Using seed ""&4A?T7{P"LOeJ3\"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 278s
+
+Generating data file "data/121.bin"
+Using seed "f^+i|dla4m'\KbdG"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 349s
+
+Generating data file "data/122.bin"
+Using seed "n86m6T4b||P>$xSo"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 1691s
+
+Generating data file "data/123.bin"
+Using seed "j(w3+M4AdfuN6y/."
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 156s
+
+Generating data file "data/124.bin"
+Using seed "L%)w#txc]raCU<Qi"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 568s
+
+Generating data file "data/125.bin"
+Using seed "ls-c$UDnfX~-aE)_"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 135s
+
+Generating data file "data/126.bin"
+Using seed "0ZnsyPv"mA.^Yo}("
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 665s
+
+Generating data file "data/127.bin"
+Using seed "64+;4UI9'NeXs}{&"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 774s
+
+Generating data file "data/128.bin"
+Using seed ">5eBaE,=5:xijqw;"
+Generating...
+0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 
+Done in 325s
+
+Average generation time: 469s
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jtest[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jtest[00m$ cd ../..
+[?2004l[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG[00m$ make clean
+[?2004lrm bin/libjabberwock.a
+rm source/jabberwock/*.o
+rm bin/jtest
+rm source/jtest/*.o
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG[00m$ cd tests/jtest
+[?2004l[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jtest[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jtest[00m$ mkdir results
+[?2004l[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jtest[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jtest[00m$ ./run_tests.sh
+[?2004lData file count: 128
+Testing data/1.bin
+Testing data/2.bin
+Testing data/3.bin
+Testing data/4.bin
+Testing data/5.bin
+Testing data/6.bin
+Testing data/7.bin
+Testing data/8.bin
+Testing data/9.bin
+Testing data/10.bin
+Testing data/11.bin
+Testing data/12.bin
+Testing data/13.bin
+Testing data/14.bin
+Testing data/15.bin
+Testing data/16.bin
+Testing data/17.bin
+Testing data/18.bin
+Testing data/19.bin
+Testing data/20.bin
+Testing data/21.bin
+Testing data/22.bin
+Testing data/23.bin
+Testing data/24.bin
+Testing data/25.bin
+Testing data/26.bin
+Testing data/27.bin
+Testing data/28.bin
+Testing data/29.bin
+Testing data/30.bin
+Testing data/31.bin
+Testing data/32.bin
+Testing data/33.bin
+Testing data/34.bin
+Testing data/35.bin
+Testing data/36.bin
+Testing data/37.bin
+Testing data/38.bin
+Testing data/39.bin
+Testing data/40.bin
+Testing data/41.bin
+Testing data/42.bin
+Testing data/43.bin
+Testing data/44.bin
+Testing data/45.bin
+Testing data/46.bin
+Testing data/47.bin
+Testing data/48.bin
+Testing data/49.bin
+Testing data/50.bin
+Testing data/51.bin
+Testing data/52.bin
+Testing data/53.bin
+Testing data/54.bin
+Testing data/55.bin
+Testing data/56.bin
+Testing data/57.bin
+Testing data/58.bin
+Testing data/59.bin
+Testing data/60.bin
+Testing data/61.bin
+Testing data/62.bin
+Testing data/63.bin
+Testing data/64.bin
+Testing data/65.bin
+Testing data/66.bin
+Testing data/67.bin
+Testing data/68.bin
+Testing data/69.bin
+Testing data/70.bin
+Testing data/71.bin
+Testing data/72.bin
+Testing data/73.bin
+Testing data/74.bin
+Testing data/75.bin
+Testing data/76.bin
+Testing data/77.bin
+Testing data/78.bin
+Testing data/79.bin
+Testing data/80.bin
+Testing data/81.bin
+Testing data/82.bin
+Testing data/83.bin
+Testing data/84.bin
+Testing data/85.bin
+Testing data/86.bin
+Testing data/87.bin
+Testing data/88.bin
+Testing data/89.bin
+Testing data/90.bin
+Testing data/91.bin
+Testing data/92.bin
+Testing data/93.bin
+Testing data/94.bin
+Testing data/95.bin
+Testing data/96.bin
+Testing data/97.bin
+Testing data/98.bin
+Testing data/99.bin
+Testing data/100.bin
+Testing data/101.bin
+Testing data/102.bin
+Testing data/103.bin
+Testing data/104.bin
+Testing data/105.bin
+Testing data/106.bin
+Testing data/107.bin
+Testing data/108.bin
+Testing data/109.bin
+Testing data/110.bin
+Testing data/111.bin
+Testing data/112.bin
+Testing data/113.bin
+Testing data/114.bin
+Testing data/115.bin
+Testing data/116.bin
+Testing data/117.bin
+Testing data/118.bin
+Testing data/119.bin
+Testing data/120.bin
+Testing data/121.bin
+Testing data/122.bin
+Testing data/123.bin
+Testing data/124.bin
+Testing data/125.bin
+Testing data/126.bin
+Testing data/127.bin
+Testing data/128.bin
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jtest[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jtest[00m$ python3 compile_results.py
+[?2004lTest count: 128
+monobit_test: 128 / 128 = 100.0%
+frequency_within_block_test: 126 / 128 = 98.4375%
+runs_test: 126 / 128 = 98.4375%
+longest_run_ones_in_a_block_test: 127 / 128 = 99.21875%
+binary_matrix_rank_test: 128 / 128 = 100.0%
+dft_test: 126 / 128 = 98.4375%
+non_overlapping_template_matching_test: 128 / 128 = 100.0%
+overlapping_template_matching_test: 126 / 128 = 98.4375%
+maurers_universal_test: 128 / 128 = 100.0%
+linear_complexity_test: 126 / 128 = 98.4375%
+serial_test: 125 / 128 = 97.65625%
+approximate_entropy_test: 127 / 128 = 99.21875%
+cumulative_sums_test: 128 / 128 = 100.0%
+random_excursion_test: 115 / 128 = 89.84375%
+random_excursion_variant_test: 118 / 128 = 92.1875%
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jtest[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jtest[00m$ [?2004l
+exit
+
+Script done on 2025-04-03 22:30:59-03:00 [COMMAND_EXIT_CODE="0"]
