@@ -19,10 +19,17 @@ JTEST_INC = -Iinclude/ -Ivendor/include/
 JTEST_SRC = source/jtest/
 JTEST_LIB = -Lbin/ -ljabberwock -Lvendor/bin/ -lsha
 
+# Define jgen project paths and commands
+JGEN_TGT = bin/jgen
+JGEN_INC = -Iinclude/ -Ivendor/include
+JGEN_SRC = source/jgen/
+JGEN_LIB = -Lbin/ -ljabberwock -Lvendor/bin/ -lsha
+
 # Build all software projects in the Jabberwock PRNG project
 all:
 	make $(JLIB_TGT)
 	make $(JTEST_TGT)
+	make $(JGEN_TGT)
 
 # Build the libjabberwock project
 $(JLIB_TGT): $(JLIB_SRC)utilities.o $(JLIB_SRC)abstract_node.o \
@@ -61,9 +68,18 @@ $(JTEST_TGT): $(JTEST_SRC)jtest.o
 $(JTEST_SRC)jtest.o: $(JTEST_SRC)jtest.cpp
 	$(CPPC) $(JTEST_INC) -o $(JTEST_SRC)jtest.o -c $(JTEST_SRC)jtest.cpp
 
+# Build the jgen project
+$(JGEN_TGT): $(JGEN_SRC)jgen.o
+	$(CPPC) -o $(JGEN_TGT) $(JGEN_SRC)jgen.o $(JGEN_LIB)
+
+$(JGEN_SRC)jgen.o: $(JGEN_SRC)jgen.cpp
+	$(CPPC) $(JGEN_INC) -o $(JGEN_SRC)jgen.o -c $(JGEN_SRC)jgen.cpp
+
 # Remove build files
 clean:
 	-rm $(JLIB_TGT)
 	-rm $(JLIB_SRC)*.o
 	-rm $(JTEST_TGT)
 	-rm $(JTEST_SRC)*.o
+	-rm $(JGEN_TGT)
+	-rm $(JGEN_SRC)*.o
