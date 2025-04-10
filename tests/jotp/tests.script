@@ -1,0 +1,75 @@
+Script started on 2025-04-10 19:10:28-03:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="185" LINES="14"]
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG[00m$ make
+[?2004l
+make bin/libjabberwock.a
+make[1]: Entering directory '/home/dlli35/Documents/Projects/Programming/Jabberwock_PRNG'
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/jabberwock/ -Ivendor/include/ -o source/jabberwock/utilities.o -c source/jabberwock/utilities.cpp
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/jabberwock/ -Ivendor/include/ -o source/jabberwock/abstract_node.o -c \
+	source/jabberwock/abstract_node.cpp
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/jabberwock/ -Ivendor/include/ -o source/jabberwock/XOR_node.o -c source/jabberwock/XOR_node.cpp
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/jabberwock/ -Ivendor/include/ -o source/jabberwock/AND_node.o -c source/jabberwock/AND_node.cpp
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/jabberwock/ -Ivendor/include/ -o source/jabberwock/OR_node.o -c source/jabberwock/OR_node.cpp
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/jabberwock/ -Ivendor/include/ -o source/jabberwock/LFSR_node.o -c source/jabberwock/LFSR_node.cpp
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/jabberwock/ -Ivendor/include/ -o source/jabberwock/jabberwock.o -c source/jabberwock/jabberwock.cpp
+ar rcs bin/libjabberwock.a source/jabberwock/utilities.o source/jabberwock/abstract_node.o \
+	source/jabberwock/XOR_node.o source/jabberwock/AND_node.o source/jabberwock/OR_node.o \
+	source/jabberwock/LFSR_node.o source/jabberwock/jabberwock.o
+make[1]: Leaving directory '/home/dlli35/Documents/Projects/Programming/Jabberwock_PRNG'
+make bin/jtest
+make[1]: Entering directory '/home/dlli35/Documents/Projects/Programming/Jabberwock_PRNG'
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/ -Ivendor/include/ -o source/jtest/jtest.o -c source/jtest/jtest.cpp
+g++ -Wall -Wextra -pedantic -Ofast -o bin/jtest source/jtest/jtest.o -Lbin/ -ljabberwock -Lvendor/bin/ -lsha
+make[1]: Leaving directory '/home/dlli35/Documents/Projects/Programming/Jabberwock_PRNG'
+make bin/jgen
+make[1]: Entering directory '/home/dlli35/Documents/Projects/Programming/Jabberwock_PRNG'
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/ -Ivendor/include -o source/jgen/jgen.o -c source/jgen/jgen.cpp
+g++ -Wall -Wextra -pedantic -Ofast -o bin/jgen source/jgen/jgen.o -Lbin/ -ljabberwock -Lvendor/bin/ -lsha
+make[1]: Leaving directory '/home/dlli35/Documents/Projects/Programming/Jabberwock_PRNG'
+make bin/jotp
+make[1]: Entering directory '/home/dlli35/Documents/Projects/Programming/Jabberwock_PRNG'
+g++ -Wall -Wextra -pedantic -Ofast -Iinclude/ -Ivendor/include -o source/jotp/jotp.o -c source/jotp/jotp.cpp
+g++ -Wall -Wextra -pedantic -Ofast -o bin/jotp source/jotp/jotp.o -Lbin/ -ljabberwock -Lvendor/bin/ -lsha
+make[1]: Leaving directory '/home/dlli35/Documents/Projects/Programming/Jabberwock_PRNG'
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG[00m$ cd tests/jotp
+[?2004l
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[00m$ mkdir data
+[?2004l
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[00m$ echo "This is a test of the JOTP program." > data/plain.txt
+[?2004l
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[00m$ cat data/plain.txt
+[?2004l
+This is a test of the JOTP program.
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[00m$ ./../../bin/jotp
+[?2004l
+Input file name: data/plain.txt
+Output file name: data/cipher.bin
+Seed: Password123
+Converting 36B
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[00m$ cat data/cipher.bin
+[?2004l
+2x�f<��N�t��q�{(���1Z��N�֌��[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[00m$ ./../../bin/jotp
+[?2004l
+Input file name: data/cipher.bin
+Output file name: data/recovered.txt
+Seed: Password123
+Converting 36B
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[00m$ cat data/recovered.txt
+[?2004l
+This is a test of the JOTP program.
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG/tests/jotp[00m$ cd ../..
+[?2004l
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG[00m$ make clean
+[?2004l
+rm bin/libjabberwock.a
+rm source/jabberwock/*.o
+rm bin/jtest
+rm source/jtest/*.o
+rm bin/jgen
+rm source/jgen/*.o
+rm bin/jotp
+rm source/jotp/*.o
+[?2004h]0;dlli35@DLLI35: ~/Documents/Projects/Programming/Jabberwock_PRNG[01;32mdlli35@DLLI35[00m:[01;34m~/Documents/Projects/Programming/Jabberwock_PRNG[00m$ [?2004l
+
+exit
+
+Script done on 2025-04-10 19:12:26-03:00 [COMMAND_EXIT_CODE="0"]

@@ -25,11 +25,18 @@ JGEN_INC = -Iinclude/ -Ivendor/include
 JGEN_SRC = source/jgen/
 JGEN_LIB = -Lbin/ -ljabberwock -Lvendor/bin/ -lsha
 
+# Define jotp project paths and commands
+JOTP_TGT = bin/jotp
+JOTP_INC = -Iinclude/ -Ivendor/include
+JOTP_SRC = source/jotp/
+JOTP_LIB = -Lbin/ -ljabberwock -Lvendor/bin/ -lsha
+
 # Build all software projects in the Jabberwock PRNG project
 all:
 	make $(JLIB_TGT)
 	make $(JTEST_TGT)
 	make $(JGEN_TGT)
+	make $(JOTP_TGT)
 
 # Build the libjabberwock project
 $(JLIB_TGT): $(JLIB_SRC)utilities.o $(JLIB_SRC)abstract_node.o \
@@ -75,6 +82,13 @@ $(JGEN_TGT): $(JGEN_SRC)jgen.o
 $(JGEN_SRC)jgen.o: $(JGEN_SRC)jgen.cpp
 	$(CPPC) $(JGEN_INC) -o $(JGEN_SRC)jgen.o -c $(JGEN_SRC)jgen.cpp
 
+# Build the jotp project
+$(JOTP_TGT): $(JOTP_SRC)jotp.o
+	$(CPPC) -o $(JOTP_TGT) $(JOTP_SRC)jotp.o $(JOTP_LIB)
+
+$(JOTP_SRC)jotp.o: $(JOTP_SRC)jotp.cpp
+	$(CPPC) $(JOTP_INC) -o $(JOTP_SRC)jotp.o -c $(JOTP_SRC)jotp.cpp
+
 # Remove build files
 clean:
 	-rm $(JLIB_TGT)
@@ -83,3 +97,5 @@ clean:
 	-rm $(JTEST_SRC)*.o
 	-rm $(JGEN_TGT)
 	-rm $(JGEN_SRC)*.o
+	-rm $(JOTP_TGT)
+	-rm $(JOTP_SRC)*.o
