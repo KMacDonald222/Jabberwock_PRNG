@@ -1,11 +1,11 @@
 /*
-File:       jgen.cpp
+File:       JGen.cpp
 Author:     Keegan MacDonald
 Created:    2025.04.04
-Purpose:    Implement the main entry point of the jgen program
+Purpose:    Implement the main entry point of the JGen program
 */
 
-#include <jabberwock/jabberwock.h>
+#include <Jabberwock/Jabberwock.h>
 
 #include <iostream>
 #include <fstream>
@@ -17,11 +17,11 @@ std::string DEFAULT_CHARS = "abcdefghijklmnopqrstuvwxyz`1234567890-=[]\\;',./"
 
 /*
 Generate binary data using the Jabberwock PRNG
-Parameter: jabberwock& jprng - The seeded instance of the Jabberwock PRNG
+Parameter: Jabberwock& jabberwock - The seeded instance of the Jabberwock PRNG
 Parameter: size_t out_count - The number of bytes to generate
 Parameter: const std::string& out_file_name - The file path to output bytes to
 */
-void gen_bin(jabberwock& jprng, size_t out_count,
+void Gen_Bin(Jabberwock& jabberwock, size_t out_count,
     const std::string& out_file_name) {
     // Open the output file if necessary
     std::ofstream out_file;
@@ -40,7 +40,7 @@ void gen_bin(jabberwock& jprng, size_t out_count,
     // Generate bytes
     std::cout << "Generating" << std::endl;
     for (size_t i = 0; i < out_count; i++) {
-        uint8_t out_byte = jprng.get_byte();
+        uint8_t out_byte = jabberwock.get_byte();
         if (!out_file_name.empty()) {
             out_file.write((const char*)(&out_byte), 1);
             for (size_t j = 0; j < 10; j++) {
@@ -65,12 +65,12 @@ void gen_bin(jabberwock& jprng, size_t out_count,
 
 /*
 Generate text data using the Jabberwock PRNG
-Parameter: jabberwock& jprng - The seeded instance of the Jabberwock PRNG
+Parameter: Jabberwock& jabberwock - The seeded instance of the Jabberwock PRNG
 Parameter: size_t out_count - The number of characters to generate
 Parameter: const std::string& out_file_name - The file path to output characters
 to
 */
-void gen_text(jabberwock& jprng, size_t out_count,
+void Gen_Text(Jabberwock& jabberwock, size_t out_count,
     const std::string& out_file_name) {
     // Get the set of allowed characters
     std::cout << "Allowed characters (default all): ";
@@ -111,7 +111,7 @@ void gen_text(jabberwock& jprng, size_t out_count,
         uint32_t selector = 0x00000000;
         for (size_t j = 0; j < 4; j++) {
             selector <<= 8;
-            selector |= jprng.get_byte();
+            selector |= jabberwock.get_byte();
         }
         char out_char = allowed_chars[selector % allowed_chars.length()];
         if (!out_file_name.empty()) {
@@ -138,11 +138,11 @@ void gen_text(jabberwock& jprng, size_t out_count,
 
 /*
 Generate integer data using the Jabberwock PRNG
-Parameter: jabberwock& jprng - The seeded instance of the Jabberwock PRNG
+Parameter: Jabberwock& jabberwock - The seeded instance of the Jabberwock PRNG
 Parameter: size_t out_count - The number of integers to generate
 Parameter: const std::string& out_file_name - The file path to output integer to
 */
-void gen_ints(jabberwock& jprng, size_t out_count,
+void Gen_Ints(Jabberwock& jabberwock, size_t out_count,
     const std::string& out_file_name) {
     // Get the minimum value
     std::cout << "Minimum: ";
@@ -185,7 +185,7 @@ void gen_ints(jabberwock& jprng, size_t out_count,
         uint32_t selector = 0x00000000;
         for (size_t j = 0; j < 4; j++) {
             selector <<= 8;
-            selector |= jprng.get_byte();
+            selector |= jabberwock.get_byte();
         }
         int out_int = minimum + (selector % range);
         if (!out_file_name.empty()) {
@@ -212,11 +212,11 @@ void gen_ints(jabberwock& jprng, size_t out_count,
 
 /*
 Generate float data using the Jabberwock PRNG
-Parameter: jabberwock& jprng - The seeded instance of the Jabberwock PRNG
+Parameter: Jabberwock& jabberwock - The seeded instance of the Jabberwock PRNG
 Parameter: size_t out_count - The number of floats to generate
 Parameter: const std::string& out_file_name - The file path to output floats to
 */
-void gen_floats(jabberwock& jprng, size_t out_count,
+void Gen_Floats(Jabberwock& jabberwock, size_t out_count,
     const std::string& out_file_name) {
     // Get the minimum value
     std::cout << "Minimum: ";
@@ -259,7 +259,7 @@ void gen_floats(jabberwock& jprng, size_t out_count,
         uint32_t selector = 0x00000000;
         for (size_t j = 0; j < 4; j++) {
             selector <<= 8;
-            selector |= jprng.get_byte();
+            selector |= jabberwock.get_byte();
         }
         float distance = (float)selector / (float)0xFFFFFFFF;
         float out_float = minimum + (distance * range);
@@ -286,7 +286,7 @@ void gen_floats(jabberwock& jprng, size_t out_count,
 }
 
 /*
-The main entry point to the jgen program
+The main entry point to the JGen program
 Returns: int - The exit code of the program
 */
 int main() {
@@ -305,8 +305,8 @@ int main() {
         std::cout << "Using randomized seed \"" << seed << "\"" << std::endl;
     }
     // Create a Jabberwock PRNG instance
-    jabberwock jprng;
-    jprng.seed(seed);
+    Jabberwock jabberwock;
+    jabberwock.seed(seed);
     std::cout << "Seeded Jabberwock PRNG" << std::endl;
     // Get the number of output symbols to generate
     std::cout << "Output symbol count (default 1): ";
@@ -363,19 +363,19 @@ int main() {
     // Switch into the appropriate mode
     switch (out_fmt_mode) {
         case 1: {
-            gen_bin(jprng, out_count, out_file_name);
+            Gen_Bin(jabberwock, out_count, out_file_name);
             break;
         }
         case 2: {
-            gen_text(jprng, out_count, out_file_name);
+            Gen_Text(jabberwock, out_count, out_file_name);
             break;
         }
         case 3: {
-            gen_ints(jprng, out_count, out_file_name);
+            Gen_Ints(jabberwock, out_count, out_file_name);
             break;
         }
         case 4: {
-            gen_floats(jprng, out_count, out_file_name);
+            Gen_Floats(jabberwock, out_count, out_file_name);
             break;
         }
     }
@@ -384,6 +384,6 @@ int main() {
         seed[i] = '\0';
     }
     seed.clear();
-    jprng.clear();
+    jabberwock.clear();
     return EXIT_SUCCESS;
 }

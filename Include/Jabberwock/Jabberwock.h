@@ -1,5 +1,5 @@
 /*
-File:       jabberwock.h
+File:       Jabberwock.h
 Author:     Keegan MacDonald
 Created:    2025.03.31
 Purpose:    Declare the main class of the Jabberwock PRNG library
@@ -8,15 +8,15 @@ Purpose:    Declare the main class of the Jabberwock PRNG library
 #ifndef JLIB_JABBERWOCK_H
 #define JLIB_JABBERWOCK_H
 
-#include "nodes.h"
+#include "Nodes.h"
 
 // The main wrapper class of the Jabberwock PRNG library
-class jabberwock {
+class Jabberwock {
 public:
     /*
     Destructor for Jabberwock PRNG
     */
-    ~jabberwock();
+    ~Jabberwock();
     /*
     Initialize the Jabberwock PRNG tree memory
     Parameter: const std::string& seed - The PRNG seed
@@ -34,7 +34,7 @@ public:
 
 private:
     // The root node of the Jabberwock PRNG tree
-    XOR_node m_root;
+    XOR_Node m_root;
 };
 
 #endif

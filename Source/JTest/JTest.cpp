@@ -1,24 +1,24 @@
 /*
-File:       jtest.cpp
+File:       JTest.cpp
 Author:     Keegan MacDonald
 Created:    2025.03.28
-Purpose:    Implement the main entry point to the jtest program
+Purpose:    Implement the main entry point to the JTest program
 */
 
-#include <jabberwock/jabberwock.h>
+#include <Jabberwock/Jabberwock.h>
 
 #include <iostream>
 #include <fstream>
 #include <chrono>
 
-// Define jtest module variables
+// Define JTest module variables
 
 // Set of printable characters for generating seed values
 std::string CHARS = "abcdefghijklmnopqrstuvwxyz`1234567890-=[]\\;',./"
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+{}|:\"<>?";
 
 /*
-The main entry point of the jtest program
+The main entry point of the JTest program
 Returns: int - The exit code of the program
 */
 int main() {
@@ -71,8 +71,8 @@ int main() {
         }
         std::cout << "Using seed \"" << seed << "\"" << std::endl;
         // Seed the Jabberwock PRNG and initialize memory
-        jabberwock prng;
-        prng.seed(seed);
+        Jabberwock jabberwock;
+        jabberwock.seed(seed);
         bool progress[10];
         for (size_t j = 0; j < 10; j++) {
             progress[j] = false;
@@ -83,7 +83,7 @@ int main() {
         // Generate output data
         std::cout << "Generating..." << std::endl;
         for (size_t j = 0; j < out_file_size; j++) {
-            uint8_t out_byte = prng.get_byte();
+            uint8_t out_byte = jabberwock.get_byte();
             out_file.write((const char*)(&out_byte), 1);
             for (size_t k = 0; k < 10; k++) {
                 if (((float)j / (float)out_file_size > (float)k / 10.0f)
@@ -103,7 +103,7 @@ int main() {
         std::cout << std::endl << "Done in " << elapsed << "s" << std::endl
             << std::endl;
         // Clear the Jabberwock PRNG and close this output file
-        prng.clear();
+        jabberwock.clear();
         out_file.close();
     }
     // Compute the average generation time

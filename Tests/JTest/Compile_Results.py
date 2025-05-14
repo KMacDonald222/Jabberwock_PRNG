@@ -1,4 +1,4 @@
-# File:     compile_results.py
+# File:     Compile_Results.py
 # Author:   Keegan MacDonald
 # Created:  2025.04.01
 # Purpose:  Extract the pass/fail results of the NIST SP 800-22 Rev 1a tests
@@ -13,7 +13,7 @@ results = [ 0 ] * 15
 
 # Read all test results
 for index in range(file_count):
-    in_file = open("results/" + str(index + 1) + ".txt", "r")
+    in_file = open("Results/" + str(index + 1) + ".txt", "r")
     lines = in_file.readlines()
     in_file.close();
     # Iterate through test result lines

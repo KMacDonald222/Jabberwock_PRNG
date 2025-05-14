@@ -1,5 +1,5 @@
 /*
-File:       nodes.h
+File:       Nodes.h
 Author:     Keegan MacDonald
 Created:    2025.03.28
 Purpose:    Declare node type classes for the Jabberwock PRNG tree
@@ -12,12 +12,12 @@ Purpose:    Declare node type classes for the Jabberwock PRNG tree
 #include <vector>
 
 // An abstract node in the Jabberwock PRNG tree
-class abstract_node {
+class Abstract_Node {
 public:
     /*
     Abstract node destructor
     */
-    virtual ~abstract_node();
+    virtual ~Abstract_Node();
     /*
     Seed this node's children
     Parameter: const std::string& seed - Seed data string to permute and pass to
@@ -37,16 +37,16 @@ public:
 
 protected:
     // Set of pointers to this node's children in the Jabberwock PRNG tree
-    std::vector<abstract_node*> m_children;
+    std::vector<Abstract_Node*> m_children;
 };
 
 // An XOR node in the Jabberwock PRNG tree
-class XOR_node : public abstract_node {
+class XOR_Node : public Abstract_Node {
 public:
     /*
     XOR node destructor
     */
-    ~XOR_node() override;
+    ~XOR_Node() override;
     /*
     Initialize this XOR node's and its childrens' memory
     Parameter: const std::string& seed - Seed data to choose child types to
@@ -63,12 +63,12 @@ public:
 };
 
 // An AND node in the Jabberwock PRNG tree
-class AND_node : public abstract_node {
+class AND_Node : public Abstract_Node {
 public:
     /*
     AND node destructor
     */
-    ~AND_node() override;
+    ~AND_Node() override;
     /*
     Initialize this AND node's and its childrens' memory
     Parameter: const std::string& seed - Seed data to choose child types to
@@ -85,12 +85,12 @@ public:
 };
 
 // An OR node in the Jabberwock PRNG tree
-class OR_node : public abstract_node {
+class OR_Node : public Abstract_Node {
 public:
     /*
     OR node destructor
     */
-    ~OR_node() override;
+    ~OR_Node() override;
     /*
     Initialize this OR node's and its childrens' memory
     Parameter: const std::string& seed - Seed data to choose child types to
@@ -107,12 +107,12 @@ public:
 };
 
 // A Galois LFSR node in the Jabberwock PRNG tree
-class LFSR_node : public abstract_node {
+class LFSR_Node : public Abstract_Node {
 public:
     /*
     LFSR node destructor
     */
-    ~LFSR_node() override;
+    ~LFSR_Node() override;
     /*
     Initialize this LFSR node's memory
     Parameter: const std::string& seed - Seed data to choose LFSR configuration

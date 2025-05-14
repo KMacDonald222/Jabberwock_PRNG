@@ -8,28 +8,28 @@
 CPPC = g++ -Wall -Wextra -pedantic -Ofast
 AR = ar rcs
 
-# Define libjabberwock project paths and commands
-JLIB_TGT = bin/libjabberwock.a
-JLIB_INC = -Iinclude/jabberwock/ -Ivendor/include/
-JLIB_SRC = source/jabberwock/
+# Define libJabberwock project paths and commands
+JLIB_TGT = Bin/libJabberwock.a
+JLIB_INC = -IInclude/Jabberwock/ -IVendor/Include/
+JLIB_SRC = Source/Jabberwock/
 
-# Define jtest project paths and commands
-JTEST_TGT = bin/jtest
-JTEST_INC = -Iinclude/ -Ivendor/include/
-JTEST_SRC = source/jtest/
-JTEST_LIB = -Lbin/ -ljabberwock -Lvendor/bin/ -lsha
+# Define JTest project paths and commands
+JTEST_TGT = Bin/JTest
+JTEST_INC = -IInclude/ -IVendor/Include/
+JTEST_SRC = Source/JTest/
+JTEST_LIB = -LBin/ -lJabberwock -LVendor/Bin/ -lsha
 
-# Define jgen project paths and commands
-JGEN_TGT = bin/jgen
-JGEN_INC = -Iinclude/ -Ivendor/include
-JGEN_SRC = source/jgen/
-JGEN_LIB = -Lbin/ -ljabberwock -Lvendor/bin/ -lsha
+# Define JGen project paths and commands
+JGEN_TGT = Bin/JGen
+JGEN_INC = -IInclude/ -IVendor/Include
+JGEN_SRC = Source/JGen/
+JGEN_LIB = -LBin/ -lJabberwock -LVendor/Bin/ -lsha
 
-# Define jotp project paths and commands
-JOTP_TGT = bin/jotp
-JOTP_INC = -Iinclude/ -Ivendor/include
-JOTP_SRC = source/jotp/
-JOTP_LIB = -Lbin/ -ljabberwock -Lvendor/bin/ -lsha
+# Define JOTP project paths and commands
+JOTP_TGT = Bin/JOTP
+JOTP_INC = -IInclude/ -IVendor/Include
+JOTP_SRC = Source/JOTP/
+JOTP_LIB = -LBin/ -lJabberwock -LVendor/Bin/ -lsha
 
 # Build all software projects in the Jabberwock PRNG project
 all:
@@ -38,56 +38,56 @@ all:
 	make $(JGEN_TGT)
 	make $(JOTP_TGT)
 
-# Build the libjabberwock project
-$(JLIB_TGT): $(JLIB_SRC)utilities.o $(JLIB_SRC)abstract_node.o \
-	$(JLIB_SRC)XOR_node.o $(JLIB_SRC)AND_node.o $(JLIB_SRC)OR_node.o \
-	$(JLIB_SRC)LFSR_node.o $(JLIB_SRC)jabberwock.o
-	$(AR) $(JLIB_TGT) $(JLIB_SRC)utilities.o $(JLIB_SRC)abstract_node.o \
-		$(JLIB_SRC)XOR_node.o $(JLIB_SRC)AND_node.o $(JLIB_SRC)OR_node.o \
-		$(JLIB_SRC)LFSR_node.o $(JLIB_SRC)jabberwock.o
+# Build the libJabberwock project
+$(JLIB_TGT): $(JLIB_SRC)Utilities.o $(JLIB_SRC)Abstract_Node.o \
+	$(JLIB_SRC)XOR_Node.o $(JLIB_SRC)AND_Node.o $(JLIB_SRC)OR_Node.o \
+	$(JLIB_SRC)LFSR_Node.o $(JLIB_SRC)Jabberwock.o
+	$(AR) $(JLIB_TGT) $(JLIB_SRC)Utilities.o $(JLIB_SRC)Abstract_Node.o \
+		$(JLIB_SRC)XOR_Node.o $(JLIB_SRC)AND_Node.o $(JLIB_SRC)OR_Node.o \
+		$(JLIB_SRC)LFSR_Node.o $(JLIB_SRC)Jabberwock.o
 
-$(JLIB_SRC)utilities.o: $(JLIB_SRC)utilities.cpp
-	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)utilities.o -c $(JLIB_SRC)utilities.cpp
+$(JLIB_SRC)Utilities.o: $(JLIB_SRC)Utilities.cpp
+	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)Utilities.o -c $(JLIB_SRC)Utilities.cpp
 
-$(JLIB_SRC)abstract_node.o: $(JLIB_SRC)abstract_node.cpp
-	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)abstract_node.o -c \
-		$(JLIB_SRC)abstract_node.cpp
+$(JLIB_SRC)Abstract_Node.o: $(JLIB_SRC)Abstract_Node.cpp
+	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)Abstract_Node.o -c \
+		$(JLIB_SRC)Abstract_Node.cpp
 
-$(JLIB_SRC)XOR_node.o: $(JLIB_SRC)XOR_node.cpp
-	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)XOR_node.o -c $(JLIB_SRC)XOR_node.cpp
+$(JLIB_SRC)XOR_Node.o: $(JLIB_SRC)XOR_Node.cpp
+	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)XOR_Node.o -c $(JLIB_SRC)XOR_Node.cpp
 
-$(JLIB_SRC)AND_node.o: $(JLIB_SRC)AND_node.cpp
-	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)AND_node.o -c $(JLIB_SRC)AND_node.cpp
+$(JLIB_SRC)AND_Node.o: $(JLIB_SRC)AND_Node.cpp
+	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)AND_Node.o -c $(JLIB_SRC)AND_Node.cpp
 
-$(JLIB_SRC)OR_node.o: $(JLIB_SRC)OR_node.cpp
-	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)OR_node.o -c $(JLIB_SRC)OR_node.cpp
+$(JLIB_SRC)OR_Node.o: $(JLIB_SRC)OR_Node.cpp
+	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)OR_Node.o -c $(JLIB_SRC)OR_Node.cpp
 
-$(JLIB_SRC)LFSR_node.o: $(JLIB_SRC)LFSR_node.cpp
-	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)LFSR_node.o -c $(JLIB_SRC)LFSR_node.cpp
+$(JLIB_SRC)LFSR_Node.o: $(JLIB_SRC)LFSR_Node.cpp
+	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)LFSR_Node.o -c $(JLIB_SRC)LFSR_Node.cpp
 
-$(JLIB_SRC)jabberwock.o: $(JLIB_SRC)jabberwock.cpp
-	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)jabberwock.o -c $(JLIB_SRC)jabberwock.cpp
+$(JLIB_SRC)Jabberwock.o: $(JLIB_SRC)Jabberwock.cpp
+	$(CPPC) $(JLIB_INC) -o $(JLIB_SRC)Jabberwock.o -c $(JLIB_SRC)Jabberwock.cpp
 
-# Build the jtest project
-$(JTEST_TGT): $(JTEST_SRC)jtest.o
-	$(CPPC) -o $(JTEST_TGT) $(JTEST_SRC)jtest.o $(JTEST_LIB)
+# Build the JTest project
+$(JTEST_TGT): $(JTEST_SRC)JTest.o
+	$(CPPC) -o $(JTEST_TGT) $(JTEST_SRC)JTest.o $(JTEST_LIB)
 
-$(JTEST_SRC)jtest.o: $(JTEST_SRC)jtest.cpp
-	$(CPPC) $(JTEST_INC) -o $(JTEST_SRC)jtest.o -c $(JTEST_SRC)jtest.cpp
+$(JTEST_SRC)JTest.o: $(JTEST_SRC)JTest.cpp
+	$(CPPC) $(JTEST_INC) -o $(JTEST_SRC)JTest.o -c $(JTEST_SRC)JTest.cpp
 
-# Build the jgen project
-$(JGEN_TGT): $(JGEN_SRC)jgen.o
-	$(CPPC) -o $(JGEN_TGT) $(JGEN_SRC)jgen.o $(JGEN_LIB)
+# Build the JGen project
+$(JGEN_TGT): $(JGEN_SRC)JGen.o
+	$(CPPC) -o $(JGEN_TGT) $(JGEN_SRC)JGen.o $(JGEN_LIB)
 
-$(JGEN_SRC)jgen.o: $(JGEN_SRC)jgen.cpp
-	$(CPPC) $(JGEN_INC) -o $(JGEN_SRC)jgen.o -c $(JGEN_SRC)jgen.cpp
+$(JGEN_SRC)JGen.o: $(JGEN_SRC)JGen.cpp
+	$(CPPC) $(JGEN_INC) -o $(JGEN_SRC)JGen.o -c $(JGEN_SRC)JGen.cpp
 
-# Build the jotp project
-$(JOTP_TGT): $(JOTP_SRC)jotp.o
-	$(CPPC) -o $(JOTP_TGT) $(JOTP_SRC)jotp.o $(JOTP_LIB)
+# Build the JOTP project
+$(JOTP_TGT): $(JOTP_SRC)JOTP.o
+	$(CPPC) -o $(JOTP_TGT) $(JOTP_SRC)JOTP.o $(JOTP_LIB)
 
-$(JOTP_SRC)jotp.o: $(JOTP_SRC)jotp.cpp
-	$(CPPC) $(JOTP_INC) -o $(JOTP_SRC)jotp.o -c $(JOTP_SRC)jotp.cpp
+$(JOTP_SRC)JOTP.o: $(JOTP_SRC)JOTP.cpp
+	$(CPPC) $(JOTP_INC) -o $(JOTP_SRC)JOTP.o -c $(JOTP_SRC)JOTP.cpp
 
 # Remove build files
 clean:

@@ -1,30 +1,30 @@
 /*
-File:       abstract_node.cpp
+File:       Abstract_Node.cpp
 Author:     Keegan MacDonald
 Created:    2025.03.28
-Purpose:    Implement abstract_node class functions declared in nodes.h
+Purpose:    Implement Abstract_Node class functions declared in Nodes.h
 */
 
-#include "nodes.h"
-#include "utilities.h"
+#include "Nodes.h"
+#include "Utilities.h"
 
-// Implement abstract_node class functions
+// Implement Abstract_Node class functions
 
-abstract_node::~abstract_node() {
+Abstract_Node::~Abstract_Node() {
     clear();
 }
 
-void abstract_node::seed(const std::string& seed, size_t level) {
+void Abstract_Node::seed(const std::string& seed, size_t level) {
     // Seed each child node with a permuted version of the seed string and one
     // less than the current level count
     std::string permuted_seed = seed;
     for (size_t i = 0; i < m_children.size(); i++) {
-        permuted_seed = permute_string(permuted_seed);
+        permuted_seed = Permute_String(permuted_seed);
         m_children[i]->seed(permuted_seed, level - 1);
     }
 }
 
-void abstract_node::clear() {
+void Abstract_Node::clear() {
     // Clear each child node and delete it from memory
     for (size_t i = 0; i < m_children.size(); i++) {
         m_children[i]->clear();

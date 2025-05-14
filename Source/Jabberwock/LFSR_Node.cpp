@@ -1,14 +1,14 @@
 /*
-File:       LFSR_node.cpp
+File:       LFSR_Node.cpp
 Author:     Keegan MacDonald
 Created:    2025.03.28
-Purpose:    Implement LFSR_node class functions declared in nodes.h
+Purpose:    Implement LFSR_Node class functions declared in Nodes.h
 */
 
-#include "nodes.h"
-#include "utilities.h"
+#include "Nodes.h"
+#include "Utilities.h"
 
-// Define LFSR_node module variables
+// Define LFSR_Node module variables
 
 // Set of 16 preset width and tap position configurations for LFSRs
 std::vector<std::vector<size_t>> LFSR_CONFIGS = {
@@ -30,15 +30,15 @@ std::vector<std::vector<size_t>> LFSR_CONFIGS = {
     { 64, 63, 61, 60, },
 };
 
-// Implement LFSR_node class functions
+// Implement LFSR_Node class functions
 
-LFSR_node::~LFSR_node() {
+LFSR_Node::~LFSR_Node() {
     clear();
 }
 
-void LFSR_node::seed(const std::string& seed, size_t) {
+void LFSR_Node::seed(const std::string& seed, size_t) {
     // Compute seed SHA-512 digest
-    std::vector<bool> bin_digest = SHA_bin(seed);
+    std::vector<bool> bin_digest = SHA_Bin(seed);
     // Choose a configuration choice by the seed's SHA-512 digest
     uint8_t config_index = 0x00;
     for (size_t i = 0; i < 4; i++) {
@@ -63,7 +63,7 @@ void LFSR_node::seed(const std::string& seed, size_t) {
     }
 }
 
-uint8_t LFSR_node::get_byte() {
+uint8_t LFSR_Node::get_byte() {
     // Get LFSR buffer width
     size_t width = m_state.size();
     // Generate 8 output bits
@@ -88,7 +88,7 @@ uint8_t LFSR_node::get_byte() {
     return out_byte;
 }
 
-void LFSR_node::clear() {
+void LFSR_Node::clear() {
     // Overwrite the state and tap position buffers
     size_t width = m_state.size();
     for (size_t i = 0; i < width; i++) {

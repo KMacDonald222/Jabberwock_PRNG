@@ -1,11 +1,11 @@
 /*
-File:       utilities.cpp
+File:       Utilities.cpp
 Author:     Keegan MacDonald
 Created:    2025.03.28
-Purpose:    Implement utility module functions found in utilities.h
+Purpose:    Implement utility module functions found in Utilities.h
 */
 
-#include "utilities.h"
+#include "Utilities.h"
 
 #include <SHA/SHA512.h>
 
@@ -53,17 +53,17 @@ std::vector<std::vector<size_t>> PERMUTATIONS_8 = {
 
 // Implement utilities module functions
 
-std::string SHA_hex(const std::string& input) {
+std::string SHA_Hex(const std::string& input) {
     SHA512 sha;
     return sha.hash(input);
 }
 
-std::vector<bool> SHA_bin(const std::string& input) {
+std::vector<bool> SHA_Bin(const std::string& input) {
     // Initialize memory
     std::string hex_chars = "0123456789abcdef";
     std::vector<bool> bin_digest;
     // Get the hexadecimal digest to convert to binary
-    std::string hex_digest = SHA_hex(input);
+    std::string hex_digest = SHA_Hex(input);
     // Convert each character of the hexadecimal digest to 4 bits
     for (size_t i = 0; i < hex_digest.length(); i++) {
         // Initialize memory
@@ -83,10 +83,10 @@ std::vector<bool> SHA_bin(const std::string& input) {
     return bin_digest;
 }
 
-std::string permute_string(const std::string& input) {
+std::string Permute_String(const std::string& input) {
     // Compute the hexadecimal and binary SHA-512 digests of the input
-    std::string hex_digest = SHA_hex(input);
-    std::vector<bool> bin_digest = SHA_bin(input);
+    std::string hex_digest = SHA_Hex(input);
+    std::vector<bool> bin_digest = SHA_Bin(input);
     // Pad the input string to the next highest multiple of 8 in length
     std::string padded = input;
     size_t padding_index = 0;
