@@ -9,27 +9,27 @@ CPPC = g++ -Wall -Wextra -pedantic -Ofast
 AR = ar rcs
 
 # Define libJabberwock project paths and commands
-JLIB_TGT = Bin/libJabberwock.a
+JLIB_TGT = Binary/libJabberwock.a
 JLIB_INC = -IInclude/Jabberwock/ -IVendor/Include/
 JLIB_SRC = Source/Jabberwock/
 
 # Define JTest project paths and commands
-JTEST_TGT = Bin/JTest
+JTEST_TGT = Binary/JTest
 JTEST_INC = -IInclude/ -IVendor/Include/
 JTEST_SRC = Source/JTest/
-JTEST_LIB = -LBin/ -lJabberwock -LVendor/Bin/ -lsha
+JTEST_LIB = -LBinary/ -lJabberwock -LVendor/Binary/ -lsha
 
 # Define JGen project paths and commands
-JGEN_TGT = Bin/JGen
+JGEN_TGT = Binary/JGen
 JGEN_INC = -IInclude/ -IVendor/Include
 JGEN_SRC = Source/JGen/
-JGEN_LIB = -LBin/ -lJabberwock -LVendor/Bin/ -lsha
+JGEN_LIB = -LBinary/ -lJabberwock -LVendor/Binary/ -lsha
 
 # Define JOTP project paths and commands
-JOTP_TGT = Bin/JOTP
+JOTP_TGT = Binary/JOTP
 JOTP_INC = -IInclude/ -IVendor/Include
 JOTP_SRC = Source/JOTP/
-JOTP_LIB = -LBin/ -lJabberwock -LVendor/Bin/ -lsha
+JOTP_LIB = -LBinary/ -lJabberwock -LVendor/Binary/ -lsha
 
 # Build all software projects in the Jabberwock PRNG project
 all:
