@@ -17,8 +17,8 @@ void Jabberwock::seed(const std::string& seed) {
     m_root.seed(seed, 3);
 }
 
-uint8_t Jabberwock::get_byte() {
-    return m_root.get_byte();
+uint8_t Jabberwock::getByte() {
+    return m_root.getByte();
 }
 
 void Jabberwock::clear() {

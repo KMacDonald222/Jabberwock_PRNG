@@ -1,17 +1,17 @@
 /*
-File:       LFSR_Node.cpp
+File:       LFSRNode.cpp
 Author:     Keegan MacDonald
 Created:    2025.03.28
-Purpose:    Implement LFSR_Node class functions declared in Nodes.h
+Purpose:    Implement LFSRNode class functions declared in Nodes.h
 */
 
 #include "Nodes.h"
 #include "Utilities.h"
 
-// Define LFSR_Node module variables
+// Define LFSRNode module variables
 
 // Set of 16 preset width and tap position configurations for LFSRs
-std::vector<std::vector<size_t>> LFSR_CONFIGS = {
+std::vector<std::vector<size_t>> LFSRCONFIGS = {
     { 4096, 4095, 4081, 4069, },
     { 2048, 2035, 2034, 2029, },
     { 777, 776, 767, 761, },
@@ -30,27 +30,27 @@ std::vector<std::vector<size_t>> LFSR_CONFIGS = {
     { 64, 63, 61, 60, },
 };
 
-// Implement LFSR_Node class functions
+// Implement LFSRNode class functions
 
-LFSR_Node::~LFSR_Node() {
+LFSRNode::~LFSRNode() {
     clear();
 }
 
-void LFSR_Node::seed(const std::string& seed, size_t) {
+void LFSRNode::seed(const std::string& seed, size_t) {
     // Compute seed SHA-512 digest
-    std::vector<bool> bin_digest = SHA_Bin(seed);
+    std::vector<bool> binDigest = SHABin(seed);
     // Choose a configuration choice by the seed's SHA-512 digest
-    uint8_t config_index = 0x00;
+    uint8_t configIndex = 0x00;
     for (size_t i = 0; i < 4; i++) {
-        config_index <<= 1;
-        config_index |= (int)bin_digest[508 + i];
+        configIndex <<= 1;
+        configIndex |= (int)binDigest[508 + i];
     }
     // Get the LFSR buffer width
-    size_t width = LFSR_CONFIGS[config_index][0];
+    size_t width = LFSRCONFIGS[configIndex][0];
     // Initialize state buffer
     m_state.resize(width);
     for (size_t i = 0; i < width; i++) {
-        m_state[i] = bin_digest[i % bin_digest.size()];
+        m_state[i] = binDigest[i % binDigest.size()];
     }
     // Initialize tap position buffer
     m_taps.resize(width);
@@ -58,37 +58,37 @@ void LFSR_Node::seed(const std::string& seed, size_t) {
         m_taps[i] = false;
     }
     for (size_t i = 0; i < 4; i++) {
-        size_t tap_position = LFSR_CONFIGS[config_index][i];
-        m_taps[width - tap_position] = true;
+        size_t tapPosition = LFSRCONFIGS[configIndex][i];
+        m_taps[width - tapPosition] = true;
     }
 }
 
-uint8_t LFSR_Node::get_byte() {
+uint8_t LFSRNode::getByte() {
     // Get LFSR buffer width
     size_t width = m_state.size();
     // Generate 8 output bits
-    uint8_t out_byte = 0x00;
+    uint8_t outByte = 0x00;
     for (size_t i = 0; i < 8; i++) {
         // Get output bit
-        uint8_t out_bit = (uint8_t)m_state[width - 1];
-        out_byte <<= 1;
-        out_byte |= out_bit;
+        uint8_t outBit = (uint8_t)m_state[width - 1];
+        outByte <<= 1;
+        outByte |= outBit;
         // Shift the state buffer
         for (int j = width - 1; j > 0; j--) {
             m_state[j] = m_state[j - 1];
         }
         m_state[0] = false;
-        if (out_bit == 0x01) {
+        if (outBit == 0x01) {
             // Apply XOR taps
             for (size_t j = 0; j < width; j++) {
                 m_state[j] = m_state[j] ^ m_taps[j];
             }
         }
     }
-    return out_byte;
+    return outByte;
 }
 
-void LFSR_Node::clear() {
+void LFSRNode::clear() {
     // Overwrite the state and tap position buffers
     size_t width = m_state.size();
     for (size_t i = 0; i < width; i++) {

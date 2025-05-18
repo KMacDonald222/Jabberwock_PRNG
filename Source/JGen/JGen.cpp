@@ -12,22 +12,22 @@ Purpose:    Implement the main entry point of the JGen program
 #include <bitset>
 
 // Default set of typable characters for random seed generation
-std::string DEFAULT_CHARS = "abcdefghijklmnopqrstuvwxyz`1234567890-=[]\\;',./"
+std::string DEFAULTCHARS = "abcdefghijklmnopqrstuvwxyz`1234567890-=[]\\;',./"
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+{}|:\"<>?";
 
 /*
 Generate binary data using the Jabberwock PRNG
 Parameter: Jabberwock& jabberwock - The seeded instance of the Jabberwock PRNG
-Parameter: size_t out_count - The number of bytes to generate
-Parameter: const std::string& out_file_name - The file path to output bytes to
+Parameter: size_t outCount - The number of bytes to generate
+Parameter: const std::string& outFileName - The file path to output bytes to
 */
-void Gen_Bin(Jabberwock& jabberwock, size_t out_count,
-    const std::string& out_file_name) {
+void GenBin(Jabberwock& jabberwock, size_t outCount,
+    const std::string& outFileName) {
     // Open the output file if necessary
-    std::ofstream out_file;
-    if (!out_file_name.empty()) {
-        out_file.open(out_file_name, std::ios::binary);
-        if (!out_file.good()) {
+    std::ofstream outFile;
+    if (!outFileName.empty()) {
+        outFile.open(outFileName, std::ios::binary);
+        if (!outFile.good()) {
             std::cout << "Invalid output file" << std::endl;
             return;
         }
@@ -39,12 +39,12 @@ void Gen_Bin(Jabberwock& jabberwock, size_t out_count,
     }
     // Generate bytes
     std::cout << "Generating" << std::endl;
-    for (size_t i = 0; i < out_count; i++) {
-        uint8_t out_byte = jabberwock.get_byte();
-        if (!out_file_name.empty()) {
-            out_file.write((const char*)(&out_byte), 1);
+    for (size_t i = 0; i < outCount; i++) {
+        uint8_t outByte = jabberwock.getByte();
+        if (!outFileName.empty()) {
+            outFile.write((const char*)(&outByte), 1);
             for (size_t j = 0; j < 10; j++) {
-                if ((float)j / 10.0f < (float)i / (float)out_count
+                if ((float)j / 10.0f < (float)i / (float)outCount
                     && !progress[j]) {
                     std::cout << (j * 10) << "%, ";
                     std::cout.flush();
@@ -52,50 +52,50 @@ void Gen_Bin(Jabberwock& jabberwock, size_t out_count,
                 }
             }
         } else {
-            std::cout << std::bitset<8>(out_byte);
+            std::cout << std::bitset<8>(outByte);
             std::cout.flush();
         }
     }
     std::cout << std::endl << "Done" << std::endl;
     // Close the output file if necessary
-    if (!out_file_name.empty()) {
-        out_file.close();
+    if (!outFileName.empty()) {
+        outFile.close();
     }
 }
 
 /*
 Generate text data using the Jabberwock PRNG
 Parameter: Jabberwock& jabberwock - The seeded instance of the Jabberwock PRNG
-Parameter: size_t out_count - The number of characters to generate
-Parameter: const std::string& out_file_name - The file path to output characters
+Parameter: size_t outCount - The number of characters to generate
+Parameter: const std::string& outFileName - The file path to output characters
 to
 */
-void Gen_Text(Jabberwock& jabberwock, size_t out_count,
-    const std::string& out_file_name) {
+void GenText(Jabberwock& jabberwock, size_t outCount,
+    const std::string& outFileName) {
     // Get the set of allowed characters
     std::cout << "Allowed characters (default all): ";
-    std::string allowed_chars = "";
-    if (!std::getline(std::cin, allowed_chars)) {
+    std::string allowedChars = "";
+    if (!std::getline(std::cin, allowedChars)) {
         std::cout << "Invalid input" << std::endl;
         return;
     }
-    if (allowed_chars.empty()) {
+    if (allowedChars.empty()) {
         std::cout << "Using default set of all typable characters" << std::endl;
-        allowed_chars = DEFAULT_CHARS;
+        allowedChars = DEFAULTCHARS;
     }
-    for (size_t i = 0; i < allowed_chars.length(); i++) {
-        for (size_t j = 0; j < allowed_chars.length(); j++) {
-            if (allowed_chars[i] == allowed_chars[j] && i != j) {
+    for (size_t i = 0; i < allowedChars.length(); i++) {
+        for (size_t j = 0; j < allowedChars.length(); j++) {
+            if (allowedChars[i] == allowedChars[j] && i != j) {
                 std::cout << "Invalid allowed character set" << std::endl;
                 return;
             }
         }
     }
     // Open the output file if necessary
-    std::ofstream out_file;
-    if (!out_file_name.empty()) {
-        out_file.open(out_file_name);
-        if (!out_file.good()) {
+    std::ofstream outFile;
+    if (!outFileName.empty()) {
+        outFile.open(outFileName);
+        if (!outFile.good()) {
             std::cout << "Invalid output file" << std::endl;
             return;
         }
@@ -107,17 +107,17 @@ void Gen_Text(Jabberwock& jabberwock, size_t out_count,
     }
     // Generate text characters
     std::cout << "Generating" << std::endl;
-    for (size_t i = 0; i < out_count; i++) {
+    for (size_t i = 0; i < outCount; i++) {
         uint32_t selector = 0x00000000;
         for (size_t j = 0; j < 4; j++) {
             selector <<= 8;
-            selector |= jabberwock.get_byte();
+            selector |= jabberwock.getByte();
         }
-        char out_char = allowed_chars[selector % allowed_chars.length()];
-        if (!out_file_name.empty()) {
-            out_file << out_char;
+        char outChar = allowedChars[selector % allowedChars.length()];
+        if (!outFileName.empty()) {
+            outFile << outChar;
             for (size_t j = 0; j < 10; j++) {
-                if ((float)j / 10.0f < (float)i / (float)out_count
+                if ((float)j / 10.0f < (float)i / (float)outCount
                     && !progress[j]) {
                     std::cout << (j * 10) << "%, ";
                     std::cout.flush();
@@ -125,50 +125,50 @@ void Gen_Text(Jabberwock& jabberwock, size_t out_count,
                 }
             }
         } else {
-            std::cout << out_char;
+            std::cout << outChar;
             std::cout.flush();
         }
     }
     std::cout << std::endl << "Done" << std::endl;
     // Close the output file if necessary
-    if (!out_file_name.empty()) {
-        out_file.close();
+    if (!outFileName.empty()) {
+        outFile.close();
     }
 }
 
 /*
 Generate integer data using the Jabberwock PRNG
 Parameter: Jabberwock& jabberwock - The seeded instance of the Jabberwock PRNG
-Parameter: size_t out_count - The number of integers to generate
-Parameter: const std::string& out_file_name - The file path to output integer to
+Parameter: size_t outCount - The number of integers to generate
+Parameter: const std::string& outFileName - The file path to output integer to
 */
-void Gen_Ints(Jabberwock& jabberwock, size_t out_count,
-    const std::string& out_file_name) {
+void GenInts(Jabberwock& jabberwock, size_t outCount,
+    const std::string& outFileName) {
     // Get the minimum value
     std::cout << "Minimum: ";
-    std::string minimum_str = "";
-    if (!std::getline(std::cin, minimum_str)) {
+    std::string minimumStr = "";
+    if (!std::getline(std::cin, minimumStr)) {
         std::cout << "Invalid input" << std::endl;
         return;
     }
-    int minimum = std::atoi(minimum_str.c_str());
+    int minimum = std::atoi(minimumStr.c_str());
     // Get the maximum value
     std::cout << "Maximum: ";
-    std::string maximum_str = "";
-    if (!std::getline(std::cin, maximum_str)) {
+    std::string maximumStr = "";
+    if (!std::getline(std::cin, maximumStr)) {
         std::cout << "Invalid input" << std::endl;
         return;
     }
-    int maximum = std::atoi(maximum_str.c_str());
+    int maximum = std::atoi(maximumStr.c_str());
     if (maximum <= minimum) {
         std::cout << "Invalid maximum" << std::endl;
         return;
     }
     // Open the output file if necessary
-    std::ofstream out_file;
-    if (!out_file_name.empty()) {
-        out_file.open(out_file_name);
-        if (!out_file.good()) {
+    std::ofstream outFile;
+    if (!outFileName.empty()) {
+        outFile.open(outFileName);
+        if (!outFile.good()) {
             std::cout << "Invalid output file" << std::endl;
             return;
         }
@@ -181,17 +181,17 @@ void Gen_Ints(Jabberwock& jabberwock, size_t out_count,
     int range = maximum - minimum + 1;
     // Generate the appropriate number of integers
     std::cout << "Generating" << std::endl;
-    for (size_t i = 0; i < out_count; i++) {
+    for (size_t i = 0; i < outCount; i++) {
         uint32_t selector = 0x00000000;
         for (size_t j = 0; j < 4; j++) {
             selector <<= 8;
-            selector |= jabberwock.get_byte();
+            selector |= jabberwock.getByte();
         }
-        int out_int = minimum + (selector % range);
-        if (!out_file_name.empty()) {
-            out_file << out_int << ", ";
+        int outInt = minimum + (selector % range);
+        if (!outFileName.empty()) {
+            outFile << outInt << ", ";
             for (size_t j = 0; j < 10; j++) {
-                if ((float)j / 10.0f < (float)i / (float)out_count
+                if ((float)j / 10.0f < (float)i / (float)outCount
                     && !progress[j]) {
                     std::cout << (j * 10) << "%, ";
                     std::cout.flush();
@@ -199,50 +199,50 @@ void Gen_Ints(Jabberwock& jabberwock, size_t out_count,
                 }
             }
         } else {
-            std::cout << out_int << ", ";
+            std::cout << outInt << ", ";
             std::cout.flush();
         }
     }
     std::cout << std::endl << "Done" << std::endl;
     // Close the output file if necessary
-    if (!out_file_name.empty()) {
-        out_file.close();
+    if (!outFileName.empty()) {
+        outFile.close();
     }
 }
 
 /*
 Generate float data using the Jabberwock PRNG
 Parameter: Jabberwock& jabberwock - The seeded instance of the Jabberwock PRNG
-Parameter: size_t out_count - The number of floats to generate
-Parameter: const std::string& out_file_name - The file path to output floats to
+Parameter: size_t outCount - The number of floats to generate
+Parameter: const std::string& outFileName - The file path to output floats to
 */
-void Gen_Floats(Jabberwock& jabberwock, size_t out_count,
-    const std::string& out_file_name) {
+void GenFloats(Jabberwock& jabberwock, size_t outCount,
+    const std::string& outFileName) {
     // Get the minimum value
     std::cout << "Minimum: ";
-    std::string minimum_str = "";
-    if (!std::getline(std::cin, minimum_str)) {
+    std::string minimumStr = "";
+    if (!std::getline(std::cin, minimumStr)) {
         std::cout << "Invalid input" << std::endl;
         return;
     }
-    float minimum = std::atof(minimum_str.c_str());
+    float minimum = std::atof(minimumStr.c_str());
     // Get the maximum value
     std::cout << "Maximum: ";
-    std::string maximum_str = "";
-    if (!std::getline(std::cin, maximum_str)) {
+    std::string maximumStr = "";
+    if (!std::getline(std::cin, maximumStr)) {
         std::cout << "Invalid input" << std::endl;
         return;
     }
-    float maximum = std::atof(maximum_str.c_str());
+    float maximum = std::atof(maximumStr.c_str());
     if (maximum <= minimum) {
         std::cout << "Invalid maximum" << std::endl;
         return;
     }
     // Open the output file if necessary
-    std::ofstream out_file;
-    if (!out_file_name.empty()) {
-        out_file.open(out_file_name);
-        if (!out_file.good()) {
+    std::ofstream outFile;
+    if (!outFileName.empty()) {
+        outFile.open(outFileName);
+        if (!outFile.good()) {
             std::cout << "Invalid output file" << std::endl;
             return;
         }
@@ -255,18 +255,18 @@ void Gen_Floats(Jabberwock& jabberwock, size_t out_count,
     float range = maximum - minimum + 1;
     // Generate the appropriate number of floats
     std::cout << "Generating" << std::endl;
-    for (size_t i = 0; i < out_count; i++) {
+    for (size_t i = 0; i < outCount; i++) {
         uint32_t selector = 0x00000000;
         for (size_t j = 0; j < 4; j++) {
             selector <<= 8;
-            selector |= jabberwock.get_byte();
+            selector |= jabberwock.getByte();
         }
         float distance = (float)selector / (float)0xFFFFFFFF;
-        float out_float = minimum + (distance * range);
-        if (!out_file_name.empty()) {
-            out_file << out_float << ", ";
+        float outFloat = minimum + (distance * range);
+        if (!outFileName.empty()) {
+            outFile << outFloat << ", ";
             for (size_t j = 0; j < 10; j++) {
-                if ((float)j / 10.0f < (float)i / (float)out_count
+                if ((float)j / 10.0f < (float)i / (float)outCount
                     && !progress[j]) {
                     std::cout << (j * 10) << "%, ";
                     std::cout.flush();
@@ -274,14 +274,14 @@ void Gen_Floats(Jabberwock& jabberwock, size_t out_count,
                 }
             }
         } else {
-            std::cout << out_float << ", ";
+            std::cout << outFloat << ", ";
             std::cout.flush();
         }
     }
     std::cout << std::endl << "Done" << std::endl;
     // Close the output file if necessary
-    if (!out_file_name.empty()) {
-        out_file.close();
+    if (!outFileName.empty()) {
+        outFile.close();
     }
 }
 
@@ -300,7 +300,7 @@ int main() {
     }
     if (seed.empty()) {
         for (size_t i = 0; i < 16; i++) {
-            seed += DEFAULT_CHARS[rand() % DEFAULT_CHARS.length()];
+            seed += DEFAULTCHARS[rand() % DEFAULTCHARS.length()];
         }
         std::cout << "Using randomized seed \"" << seed << "\"" << std::endl;
     }
@@ -310,72 +310,72 @@ int main() {
     std::cout << "Seeded Jabberwock PRNG" << std::endl;
     // Get the number of output symbols to generate
     std::cout << "Output symbol count (default 1): ";
-    std::string out_count_str = "";
-    if (!std::getline(std::cin, out_count_str)) {
+    std::string outCountStr = "";
+    if (!std::getline(std::cin, outCountStr)) {
         std::cout << "Invalid input" << std::endl;
         return EXIT_FAILURE;
     }
-    int out_count_int = std::atoi(out_count_str.c_str());
-    if (out_count_str.empty()) {
+    int outCountInt = std::atoi(outCountStr.c_str());
+    if (outCountStr.empty()) {
         std::cout << "Using default 1" << std::endl;
-        out_count_int = 1;
+        outCountInt = 1;
     }
-    if (out_count_int <= 0) {
+    if (outCountInt <= 0) {
         std::cout << "Invalid output symbol count" << std::endl;
         return EXIT_FAILURE;
     }
-    size_t out_count = (size_t)out_count_int;
+    size_t outCount = (size_t)outCountInt;
     // Get the output file name to write symbols to
     std::cout << "Output file name (default console): ";
-    std::string out_file_name = "";
-    if (!std::getline(std::cin, out_file_name)) {
+    std::string outFileName = "";
+    if (!std::getline(std::cin, outFileName)) {
         std::cout << "Invalid input" << std::endl;
         return EXIT_FAILURE;
     }
-    if (out_file_name.empty()) {
+    if (outFileName.empty()) {
         std::cout << "Using default output to console" << std::endl;
     } else {
-        std::ofstream out_file_test(out_file_name);
-        if (!out_file_test.good()) {
+        std::ofstream outFileTest(outFileName);
+        if (!outFileTest.good()) {
             std::cout << "Invalid output file" << std::endl;
             return EXIT_FAILURE;
         }
-        out_file_test.close();
+        outFileTest.close();
     }
     // Get the output format mode
     std::cout << "Output format mode choices:" << std::endl << "1. Binary"
         << std::endl << "2. Text" << std::endl << "3. Integers" << std::endl
         << "4. Floats" << std::endl << "Output format mode (default 1): ";
-    std::string out_fmt_mode_str = "";
-    if (!std::getline(std::cin, out_fmt_mode_str)) {
+    std::string outFmtModeStr = "";
+    if (!std::getline(std::cin, outFmtModeStr)) {
         std::cout << "Invalid input" << std::endl;
         return EXIT_FAILURE;
     }
-    int out_fmt_mode = std::atoi(out_fmt_mode_str.c_str());
-    if (out_fmt_mode_str.empty()) {
+    int outFmtMode = std::atoi(outFmtModeStr.c_str());
+    if (outFmtModeStr.empty()) {
         std::cout << "Using default binary" << std::endl;
-        out_fmt_mode = 1;
+        outFmtMode = 1;
     }
-    if (out_fmt_mode < 1 || out_fmt_mode > 4) {
+    if (outFmtMode < 1 || outFmtMode > 4) {
         std::cout << "Invalid output format mode" << std::endl;
         return EXIT_FAILURE;
     }
     // Switch into the appropriate mode
-    switch (out_fmt_mode) {
+    switch (outFmtMode) {
         case 1: {
-            Gen_Bin(jabberwock, out_count, out_file_name);
+            GenBin(jabberwock, outCount, outFileName);
             break;
         }
         case 2: {
-            Gen_Text(jabberwock, out_count, out_file_name);
+            GenText(jabberwock, outCount, outFileName);
             break;
         }
         case 3: {
-            Gen_Ints(jabberwock, out_count, out_file_name);
+            GenInts(jabberwock, outCount, outFileName);
             break;
         }
         case 4: {
-            Gen_Floats(jabberwock, out_count, out_file_name);
+            GenFloats(jabberwock, outCount, outFileName);
             break;
         }
     }

@@ -26,7 +26,7 @@ public:
     Get a pseudorandom byte from the Jabberwock PRNG tree
     Returns: uint8_t - A pseudorandom byte
     */
-    uint8_t get_byte();
+    uint8_t getByte();
     /*
     Free the Jabberwock PRNG's memory
     */
@@ -34,7 +34,7 @@ public:
 
 private:
     // The root node of the Jabberwock PRNG tree
-    XOR_Node m_root;
+    XORNode m_root;
 };
 
 #endif
